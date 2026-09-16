@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import Container from "@/components/Container";
-import normalImage from "@/images/normal_image.jpg";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -45,8 +44,8 @@ export default function SiteHeader() {
       <Container>
         <div className="flex h-16 min-w-0 items-center justify-between gap-2 sm:gap-4">
           <Link href="/" className="inline-flex min-w-0 items-center gap-2" aria-label="Go to homepage">
-            <span className="relative inline-flex h-8 w-8 overflow-hidden rounded-xl border border-zinc-300 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
-              <Image src={normalImage} alt="CFM logo" fill sizes="32px" className="object-cover" />
+            <span className="relative inline-flex h-8 w-8 overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
+              <Image src="/asset/logo.png" alt="CFM logo" fill sizes="32px" className="object-cover" />
             </span>
             <span className="truncate text-sm font-semibold tracking-tight text-zinc-900 max-[360px]:hidden dark:text-zinc-100">
               Portfolio

@@ -20,6 +20,11 @@ export interface Project {
   type: ProjectType;
   github: string;
   live: string;
+  problem?: string;
+  solution?: string;
+  role?: string;
+  features?: string[];
+  architecture?: string[];
 }
 
 export interface Experience {
@@ -55,15 +60,15 @@ export const profile: Profile = {
 export const techGroups: TechGroup[] = [
   {
     title: "Frontend",
-    items: ["Next.js", "Vue", "Tailwind CSS", "Quasar", "Bootsrap"],
+    items: ["HTML","CSS","JavaScript", "TypeScript","Next.js", "Vue", "Tailwind CSS", "Quasar", "Bootsrap","React Native","React","Expo"],
   },
   {
     title: "Backend",
-    items: ["Python", "Django", "PostgreSQL", "REST APIs", "Laravel", "PHP"],
+    items: ["Node.js", "Python", "Django", "PostgreSQL", "REST APIs", "Laravel", "PHP", "Express", "MongoDB", "SQLServer","SQLite","MySQL","SQL","Firebase"],
   },
   {
     title: "Tools",
-    items: ["GitHub Actions", "Vercel", "Docker", "Figma", "Azure"],
+    items: ["GitHub Actions", "Vercel", "Docker", "Figma","Postman", "Chrome DevTools", "Figma", "Linux/Terminal", "Redis", "Sentry", "GitHub Copilot", "Claude Code","Antigravity", "Codex", "ChatGPT", "Git", "Trello"],
   },
 ];
 
@@ -77,6 +82,11 @@ export const projects: Project[] = [
   type: "Mobile",
   github: "https://github.com/yourusername/shepherd",
   live: "https://shepherd-web-psi.vercel.app/",
+  problem: "Traditional Bible apps often feel cluttered and fail to provide personalized study tools integrated seamlessly with scripture reading.",
+  solution: "Shepherd provides a clean, modern interface focused on deep personal study, seamlessly integrating verse-based notes and devotionals.",
+  role: "Lead Developer / UI Designer",
+  features: ["Verse-based notes", "Advanced Bible search", "Daily verses", "Personalized study tracking"],
+  architecture: ["React Native", "Expo", "SQLite for local storage", "REST API integration"]
 },
   {
     id: 2,
@@ -87,6 +97,11 @@ export const projects: Project[] = [
     type: "Web",
     github: "https://example.com/nimbus-board-code",
     live: "https://jimenezdentalclinic.com",
+    problem: "Post-operative dental care relies heavily on manual follow-ups, leading to missed complications and patient anxiety.",
+    solution: "An automated recovery system that tracks patient progress and provides predictive insights to dental professionals.",
+    role: "Full-Stack Developer",
+    features: ["Automated follow-up reminders", "Predictive analytics dashboard", "Patient progress tracking", "Secure messaging"],
+    architecture: ["Django Backend", "PostgreSQL Database", "Bootstrap Frontend", "RESTful Architecture"]
   },
   {
     id: 3,
@@ -97,6 +112,11 @@ export const projects: Project[] = [
     type: "Web",
     github: "https://example.com/pocket-planner-code",
     live: "http://lms.tagum/login",
+    problem: "Manual and paper-based leave requests caused delays, lost records, and inefficiencies in HR operations.",
+    solution: "A centralized digital platform that digitizes the entire leave request lifecycle from application to approval and tracking.",
+    role: "Full-Stack Developer",
+    features: ["Digital leave application", "Multi-level approval workflows", "Real-time leave balance tracking", "HR reporting dashboard"],
+    architecture: ["Vue.js / Quasar Frontend", "Laravel Backend API", "Microsoft SQL Server"]
   },
   {
   id: 4,
@@ -107,6 +127,11 @@ export const projects: Project[] = [
   type: "Web",
   github: "https://github.com/yourusername/tagum-youth-information-system",
   live: "",
+  problem: "Managing youth programs, scholarships, and facility bookings was fragmented across multiple departments and systems.",
+  solution: "A unified platform that consolidates all youth-related services, making them easily accessible and manageable.",
+  role: "Full-Stack Developer",
+  features: ["Centralized youth registry", "Scholarship application portal", "Event management and ticketing", "Facility booking system"],
+  architecture: ["Vue.js / Quasar Frontend", "Laravel Backend API", "Microsoft SQL Server"]
 },
   {
     id: 5,
@@ -117,6 +142,11 @@ export const projects: Project[] = [
     type: "Web",
     github: "https://example.com/insight-stream-code",
     live: "",
+    problem: "Existing messaging platforms are often bloated with unnecessary features, leading to a sluggish user experience.",
+    solution: "A lightweight, fast, and secure instant messaging app focused purely on seamless communication.",
+    role: "Full-Stack Developer",
+    features: ["Real-time messaging", "Clean and intuitive UI", "Secure authentication", "Media sharing"],
+    architecture: ["Vue.js / Quasar", "Laravel WebSockets", "PostgreSQL"]
   },
 
 ];

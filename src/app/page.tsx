@@ -59,19 +59,24 @@ export default function HomePage() {
       <Container className="py-7 sm:py-8">
         <HeroCard {...profile} />
 
-        <section className="mt-6 grid gap-4 sm:gap-5 lg:grid-cols-3" aria-label="Home sections">
+        <section className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Home sections">
           <SectionCard
             title="About Me"
             // description="Short placeholder intro"
-            className="lg:col-span-2"
+            className="md:col-span-2 lg:col-span-2"
           >
-            <p className="text-sm text-justify leading-6 text-zinc-600 break-words dark:text-zinc-400">
-I’m a passionate Web Developer and UI/UX Designer who loves turning ideas into clean, functional, and user-centered digital experiences. I enjoy building modern web applications that are not only visually appealing but also practical and intuitive to use.I’m a Full-Stack Web Developer passionate about building modern, responsive, and user-friendly web applications. I enjoy turning ideas into functional digital solutions, from designing intuitive interfaces to developing reliable backend systems and APIs.
+            <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              I’m a Full-Stack Web Developer and UI/UX Designer who loves turning ideas into clean, functional, and user-centered digital experiences. I enjoy building modern web applications that are not only visually appealing but also practical and intuitive to use.
             </p>
-            <p className="mt-2 text-sm text-justify leading-6 text-zinc-600 break-words dark:text-zinc-400">
-I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, PostgreSQL, and REST APIs, along with tools such as Git, Docker, Vite, and Figma. I’m comfortable working across both frontend and backend development, including UI implementation, API integration, database management, authentication, and system architecture.          </p>
-            <p className="text-sm text-justify leading-6 text-zinc-600 break-words dark:text-zinc-400" >Beyond development, I have a background in UI/UX and graphic design, which allows me to approach projects not only from a technical perspective but also with a strong focus on usability, visual quality, and user experience.</p>
-            <p className="mt-2 text-sm text-justify leading-6 text-zinc-600 break-words dark:text-zinc-400" >I enjoy solving technical problems, learning new technologies, and continuously improving the applications I build. My goal is to grow as a Software Engineer and create reliable, scalable, and meaningful software that solves real-world problems.</p>
+            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+              I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, PostgreSQL, and REST APIs, along with tools such as Git, Docker, Vite, and Figma. I’m comfortable working across both frontend and backend development, including UI implementation, API integration, database management, authentication, and system architecture.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400" >
+              Beyond development, I have a background in UI/UX and graphic design, which allows me to approach projects not only from a technical perspective but also with a strong focus on usability, visual quality, and user experience.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400" >
+              I enjoy solving technical problems, learning new technologies, and continuously improving the applications I build. My goal is to grow as a Software Engineer and create reliable, scalable, and meaningful software that solves real-world problems.
+            </p>
          
           </SectionCard>
 
@@ -108,7 +113,7 @@ I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, Postg
                 See All Projects
               </Link>
             }
-            className="lg:col-span-2"
+            className="md:col-span-2 lg:col-span-2"
           >
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {featuredProjects.map((project) => (
@@ -158,7 +163,7 @@ I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, Postg
           <SectionCard
             title="Currently Learning"
             description="What I am focusing on right now"
-            className="lg:col-span-2 h-full"
+            className="md:col-span-2 lg:col-span-2 h-full"
           >
             <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
               {currentlyLearning.map((item) => (
@@ -201,7 +206,7 @@ I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, Postg
           <SectionCard
             title="Gallery"
             description="My gallery"
-            className="lg:col-span-3"
+            className="md:col-span-2 lg:col-span-3"
           >
             <GalleryCarousel />
           </SectionCard>
