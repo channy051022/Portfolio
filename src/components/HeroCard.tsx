@@ -7,9 +7,6 @@ import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 
 import StatChips from "@/components/StatChips";
 import { GitHubCalendar } from 'react-github-calendar';
-import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
-import { cloneElement } from "react";
 
 interface HeroCardProps {
   name: string;
@@ -76,20 +73,18 @@ export default function HeroCard({ name, roles, location, summary }: HeroCardPro
                   year={2026}
                   blockSize={9}
                   blockMargin={3}
-                    hideColorLegend={true}
-                    hideTotalCount={true}
+                    showColorLegend={false}
+                    showTotalCount={false}
                     colorScheme="light"
                     theme={{
                       light: ['#f1f5f9', '#93c5fd', '#3b82f6', '#1d4ed8', '#1e3a8a'],
                     }}
-                    renderBlock={(block, activity) => 
-                      cloneElement(block, {
-                        'data-tooltip-id': 'react-tooltip',
-                        'data-tooltip-html': `${activity.count} contributions on ${activity.date}`,
-                      })
-                    }
+                    tooltips={{
+                      activity: {
+                        text: (activity) => `${activity.count} contributions on ${activity.date}`
+                      }
+                    }}
                   />
-                <Tooltip id="react-tooltip" />
               </div>
             </div>
           </motion.div>
