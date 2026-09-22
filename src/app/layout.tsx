@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 import FloatingChatButton from "@/components/FloatingChatButton";
 import Footer from "@/components/Footer";
@@ -6,6 +7,18 @@ import SiteHeader from "@/components/SiteHeader";
 import LoaderWrapper from "@/components/LoaderWrapper";
 
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   title: "Christian Faith Mestola | Full-Stack Web Developer",
@@ -24,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
-      <body className="overflow-x-hidden">
+    <html lang="en" suppressHydrationWarning className={`overflow-x-hidden ${inter.variable} ${jetbrainsMono.variable}`}>
+      <body className="overflow-x-hidden font-sans">
         <LoaderWrapper>
           <a
             href="#main-content"

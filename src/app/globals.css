@@ -1,31 +1,44 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-github-bg: #ffffff;
+  --color-github-bg-secondary: #f6f8fa;
+  --color-github-border: #d0d7de;
+  --color-github-text: #1f2328;
+  --color-github-text-secondary: #656d76;
+  --color-github-accent: #0969da;
+  --color-github-success: #1a7f37;
+  --color-github-success-muted: #dafbe1;
+  --color-github-code: #24292f;
+  
+  /* Dark mode */
+  --color-github-dark-bg: #0d1117;
+  --color-github-dark-bg-secondary: #161b22;
+  --color-github-dark-border: #30363d;
+  --color-github-dark-text: #e6edf3;
+  --color-github-dark-text-secondary: #848d97;
+  --color-github-dark-accent: #2f81f7;
+  --color-github-dark-success: #238636;
+  --color-github-dark-success-muted: #2ea04333;
+  --color-github-dark-code: #f0f6fc;
+}
+
 @layer base {
   html,
   body {
     height: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-zinc-100 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
-    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+    @apply bg-[var(--color-github-bg)] text-[var(--color-github-text)] antialiased dark:bg-[var(--color-github-dark-bg)] dark:text-[var(--color-github-dark-text)];
+    font-family: var(--font-inter), "Segoe UI", "Helvetica Neue", sans-serif;
   }
 }
 
 @layer components {
-  @keyframes chatFloat {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-6px);
-    }
-  }
-
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -36,14 +49,18 @@
   }
 
   .surface-card {
-    @apply rounded-lg border border-zinc-200/80 bg-white shadow-sm transition duration-200 dark:border-zinc-800 dark:bg-zinc-900;
+    @apply rounded-md border border-[var(--color-github-border)] bg-[var(--color-github-bg)] transition duration-200 dark:border-[var(--color-github-dark-border)] dark:bg-[var(--color-github-dark-bg)];
+  }
+  
+  .surface-card-secondary {
+    @apply rounded-md border border-[var(--color-github-border)] bg-[var(--color-github-bg-secondary)] transition duration-200 dark:border-[var(--color-github-dark-border)] dark:bg-[var(--color-github-dark-bg-secondary)];
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:outline-zinc-100;
+    @apply inline-flex items-center justify-center rounded-md bg-[var(--color-github-success)] px-3 py-1.5 text-sm font-semibold text-white transition duration-200 hover:bg-[#1f883d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 dark:bg-[var(--color-github-dark-success)] dark:hover:bg-[#2ea043];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-800 transition duration-200 hover:-translate-y-0.5 hover:border-zinc-400 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800;
+    @apply inline-flex items-center justify-center rounded-md border border-[var(--color-github-border)] bg-[var(--color-github-bg-secondary)] px-3 py-1.5 text-sm font-semibold text-[var(--color-github-text)] transition duration-200 hover:bg-[#f3f4f6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-[var(--color-github-dark-border)] dark:bg-[var(--color-github-dark-bg-secondary)] dark:text-[var(--color-github-dark-text)] dark:hover:bg-[#21262d];
   }
 }

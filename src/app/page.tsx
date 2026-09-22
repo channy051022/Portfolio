@@ -1,270 +1,105 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import Container from "@/components/Container";
-import GalleryCarousel from "@/components/GalleryCarousel";
-import HeroCard from "@/components/HeroCard";
+import ProfileSidebar from "@/components/ProfileSidebar";
 import ProjectCard from "@/components/ProjectCard";
-import SectionCard from "@/components/SectionCard";
-import SocialIcon from "@/components/SocialIcon";
+import ExperienceItem from "@/components/ExperienceItem";
 import StatChips from "@/components/StatChips";
-import { currentlyLearning, profile, projects, recommendations, socialLinks, techGroups } from "@/lib/data";
-
-const certificates = Array.from({ length: 6 }, (_, index) => ({
-  id: index + 1,
-  image: "/file.svg",
-}));
-
-const showCertificates = false;
-const showRecommendations = false;
-
-const experienceTimeline = [
-  {
-    role: "Fullstack Developer",
-    organization: "City Goverment of Tagum",
-    year: "2026 - Present",
-  },
-  {
-    role: "Web Developer Intern",
-    organization: "City Goverment of Tagum",
-    year: "2026",
-  },
-    {
-    role: "Graphic Designer",
-    organization: "Orlando Sublimation",
-    year: "2023-2026",
-  },
-  {
-    role: "Freelance Graphic Designer",
-    organization: "Remote",
-    year: "2023 - 2026",
-  },
-  {
-    role: "Bachelor of Science in Information Technology",
-    organization: "Davao Del Norte State College",
-    year: "2022 - 2026",
-  },
-  {
-    role: "Hello World! 👋",
-    organization: "First line of code",
-    year: "2022",
-  },
-];
+import GithubActivity from "@/components/GithubActivity";
+import { projects, experience, techGroups } from "@/lib/data";
 
 export default function HomePage() {
-  const featuredProjects = projects.slice(0, 3);
+  const featuredProjects = projects.slice(0, 4);
 
   return (
-    <>
-      <Container className="py-7 sm:py-8">
-        <HeroCard {...profile} />
+    <Container className="pt-6 sm:pt-8 pb-12">
+      <div className="flex flex-col md:flex-row gap-8">
+        
+        {/* Sidebar (Left Column) */}
+        <aside className="w-full md:w-[296px] shrink-0">
+          <ProfileSidebar />
+        </aside>
 
-        <section className="mt-6 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Home sections">
-          <SectionCard
-            title="About Me"
-            // description="Short placeholder intro"
-            className="md:col-span-2 lg:col-span-2"
-          >
-            <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              I’m a Full-Stack Web Developer and UI/UX Designer who loves turning ideas into clean, functional, and user-centered digital experiences. I enjoy building modern web applications that are not only visually appealing but also practical and intuitive to use.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              I have experience working with Vue.js, Quasar, Pinia, Laravel, PHP, MySQL, PostgreSQL, and REST APIs, along with tools such as Git, Docker, Vite, and Figma. I’m comfortable working across both frontend and backend development, including UI implementation, API integration, database management, authentication, and system architecture.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400" >
-              Beyond development, I have a background in UI/UX and graphic design, which allows me to approach projects not only from a technical perspective but also with a strong focus on usability, visual quality, and user experience.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400" >
-              I enjoy solving technical problems, learning new technologies, and continuously improving the applications I build. My goal is to grow as a Software Engineer and create reliable, scalable, and meaningful software that solves real-world problems.
-            </p>
-         
-          </SectionCard>
+        {/* Main Content (Right Column) */}
+        <main className="flex-1 min-w-0 flex flex-col gap-10">
+          
+          {/* Overview Section */}
+          <section id="overview" className="scroll-mt-24">
 
-          <SectionCard
-            title="Featured Tech"
-            description="Current stack at a glance"
-            headerAction={
-              <Link
-                href="/stack"
-                className="text-sm font-medium text-zinc-700 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
-              >
-                View All
-              </Link>
-            }
-          >
-            <div className="space-y-3">
-              {techGroups.map((group) => (
-                <div key={group.title} className="space-y-2">
-                  <h3 className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">{group.title}</h3>
-                  <StatChips items={group.items} />
-                </div>
-              ))}
+            <div className="surface-card p-6">
+              <div className="prose prose-zinc dark:prose-invert max-w-none">
+                <p className="text-[15px] leading-relaxed text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+                  I’m a Full-Stack Web Developer and UI/UX Designer who loves turning ideas into clean, functional, and user-centered digital experiences. I enjoy building modern web applications that are not only visually appealing but also practical and intuitive to use.
+                </p>
+                <h3 className="text-lg font-semibold mt-6 mb-3 text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">What I Build</h3>
+                <ul className="list-disc pl-5 space-y-1 text-[15px] text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+                  <li>Web applications</li>
+                  <li>REST APIs</li>
+                  <li>Database-driven systems</li>
+                  <li>Administrative systems</li>
+                  <li>Mobile applications</li>
+                </ul>
+              </div>
             </div>
-          </SectionCard>
+          </section>
 
-          <SectionCard
-            title="Featured Projects"
-            description="My  recent project builds"
-            headerAction={
-              <Link
-                href="/projects"
-                className="text-sm font-medium text-zinc-700 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
-              >
-                See All Projects
-              </Link>
-            }
-            className="md:col-span-2 lg:col-span-2"
-          >
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {/* Pinned Repositories (Projects) */}
+          <section id="projects" className="scroll-mt-24">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-[var(--color-github-border)] dark:border-[var(--color-github-dark-border)]">
+              <h2 className="text-xl md:text-2xl font-semibold text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+                Pinned
+              </h2>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
               {featuredProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
-          </SectionCard>
-
-          <SectionCard title="Experiences" description="Quick view of recent roles">
-            <div className="relative pl-6">
-              <span
-                aria-hidden="true"
-                className="absolute bottom-1 left-2 top-1 w-px bg-zinc-200 dark:bg-zinc-700"
-              />
-
-              <ul className="space-y-5">
-                {experienceTimeline.map((item, index) => (
-                  <li
-                    key={`${item.role}-${item.year}`}
-                    className="relative flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:gap-3"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`absolute -left-4 top-2 h-3.5 w-3.5 -translate-x-1/2 cursor-pointer rounded-[2px] border-2 transition-all duration-200 hover:scale-110 hover:shadow-sm ${
-                        index === 0
-                          ? "border-zinc-900 bg-zinc-900 hover:border-zinc-700 hover:bg-zinc-700 dark:border-zinc-100 dark:bg-zinc-100 dark:hover:border-zinc-300 dark:hover:bg-zinc-300"
-                          : "border-zinc-300 bg-white hover:border-zinc-500 hover:bg-zinc-100 dark:border-zinc-600 dark:bg-zinc-900 dark:hover:border-zinc-400 dark:hover:bg-zinc-800"
-                      }`}
-                    />
-                    <div className="min-w-0 sm:max-w-[75%]">
-                      <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-                        {item.role}
-                      </h3>
-                      <p className="mt-1 text-sm text-zinc-700 break-words dark:text-zinc-300">
-                        {item.organization}
-                      </p>
-                    </div>
-                    <span className="w-fit shrink-0 rounded-sm border border-zinc-200 px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-                      {item.year}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+          </section>
+          
+          {/* Activity Graph */}
+          <section className="scroll-mt-24 hidden md:block">
+            <h2 className="text-xl md:text-2xl mb-4 pb-2 border-b border-[var(--color-github-border)] dark:border-[var(--color-github-dark-border)] font-semibold text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+              Development Activity
+            </h2>
+            <div className="surface-card p-4 flex justify-center w-full overflow-hidden">
+               <GithubActivity />
             </div>
-          </SectionCard>
+          </section>
 
-          <SectionCard
-            title="Currently Learning"
-            description="What I am focusing on right now"
-            className="md:col-span-2 lg:col-span-2 h-full"
-          >
-            <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-              {currentlyLearning.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 break-words dark:border-zinc-700 dark:bg-zinc-800/70"
-                >
-                  {item}
-                </li>
+          {/* Experience */}
+          <section id="experience" className="scroll-mt-24">
+            <h2 className="text-xl md:text-2xl mb-6 pb-2 border-b border-[var(--color-github-border)] dark:border-[var(--color-github-dark-border)] font-semibold text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+              Experience
+            </h2>
+            <ul className="ml-1 md:ml-2">
+              {experience.map((item, index) => (
+                <ExperienceItem
+                  key={`${item.company}-${item.year}-${index}`}
+                  item={item}
+                  isFirst={index === 0}
+                />
               ))}
             </ul>
-          </SectionCard>
-
-          <SectionCard
-            title="Social Connect"
-            description="Let us connect on these platforms"
-            className="h-full"
-          >
-            <div className="grid gap-2">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-between gap-3 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800/70 dark:text-zinc-200 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
-                >
-                  <span className="flex min-w-0 items-center gap-2">
-                    <SocialIcon platform={item.platform} />
-                    <span className="break-words">{item.label}</span>
-                  </span>
-                  <span aria-hidden="true" className="shrink-0">
-                    -&gt;
-                  </span>
-                </a>
+          </section>
+          
+          {/* Skills */}
+          <section id="skills" className="scroll-mt-24">
+            <h2 className="text-xl md:text-2xl mb-4 pb-2 border-b border-[var(--color-github-border)] dark:border-[var(--color-github-dark-border)] font-semibold text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+              Skills
+            </h2>
+            <div className="surface-card p-6 space-y-6">
+              {techGroups.map((group) => (
+                <div key={group.title} className="space-y-3">
+                  <h3 className="text-[15px] font-semibold text-[var(--color-github-text)] dark:text-[var(--color-github-dark-text)]">
+                    {group.title}
+                  </h3>
+                  <StatChips items={group.items} />
+                </div>
               ))}
             </div>
-          </SectionCard>
-
-          <SectionCard
-            title="Gallery"
-            description="My gallery"
-            className="md:col-span-2 lg:col-span-3"
-          >
-            <GalleryCarousel />
-          </SectionCard>
-
-          {showCertificates && (
-            <SectionCard
-              title="Certificates"
-              description="Awards and certificates placeholder"
-              className="lg:col-span-3"
-            >
-              <div className="flex gap-4 overflow-x-auto pb-1">
-                {certificates.map((item) => (
-                  <div key={item.id} className="w-56 shrink-0">
-                    <Image
-                      src={item.image}
-                      alt={`Certificate placeholder ${item.id}`}
-                      width={896}
-                      height={672}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            </SectionCard>
-          )}
-        </section>
-      </Container>
-
-      {showRecommendations && (
-        <section
-          aria-label="Recommendations"
-          className="mt-8 border-y border-zinc-200 bg-white/80 py-8 dark:border-zinc-800 dark:bg-zinc-900/70"
-        >
-          <Container>
-            <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
-              <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Recommendations</h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">Placeholder testimonials for layout preview</p>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {recommendations.map((entry) => (
-                <blockquote
-                  key={entry.person}
-                  className="surface-card p-5 text-sm leading-6 text-zinc-600 dark:text-zinc-400"
-                >
-                  <p className="mb-4">
-                    &ldquo;{entry.quote}&rdquo;
-                  </p>
-                  <footer>
-                    <p className="font-semibold text-zinc-900 dark:text-zinc-100">{entry.person}</p>
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400">{entry.title}</p>
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
-    </>
+          </section>
+          
+        </main>
+      </div>
+    </Container>
   );
 }
